@@ -401,6 +401,11 @@ p {
 .site-footer a {
 	color: #e08524
 }
+
+img { max-width:100%;}
+
+
+
 @media only screen and (max-width:720px) {.site-logo,.site-nav {
 	float: none
 }
@@ -465,4 +470,3 @@ h2,h3 {
 
 }
 
-img { max-width:100%;}
