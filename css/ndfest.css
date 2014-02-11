@@ -1,1 +1,15 @@
-h1, p {font-family: 'Open sans', sans-serif;}
+h1	{
+	font-family: 'Open sans', sans-serif;
+	font-size:
+}
+
+
+p	{
+	font-family: 'Open sans', sans-serif;
+}
+
+container	{
+	width:100%;
+	margin:4em auto 0;
+	text-align:center;
+}
