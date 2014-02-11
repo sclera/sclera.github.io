@@ -12,11 +12,15 @@ container	{
 h1	{
 	font-family: 'Open sans', sans-serif;
 	font-size:4em;
+	text-align:center;
+	color: white;
 }
 
 
 p	{
 	font-family: 'Open sans', sans-serif;
 	font-size:2em;
+	text-align:center;
+	color: white;
 }
 
