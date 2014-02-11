@@ -1,12 +1,9 @@
 body	{
-	background-image: url('/img/GC14-LP1.png');
 }
 
 container	{
 	width:100%;
-	margin:4em auto 0;
-	text-align:center;
-	color: white;
+	background-image: url('/img/GC14-LP1.png');
 }
 
 h1	{
