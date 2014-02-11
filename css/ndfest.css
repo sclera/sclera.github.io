@@ -11,6 +11,10 @@ container	{
 /*	background-image: url('/img/GC14-LP1.png');*/
 }
 
+img {
+	width:100%;
+}
+
 h1	{
 	font-family: 'Open sans', sans-serif;
 	font-size:4em;
