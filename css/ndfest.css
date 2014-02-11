@@ -1,9 +1,14 @@
-body	{
+html { 
+  background: url('/img/GC14-LP1.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 container	{
 	width:100%;
-	background-image: url('/img/GC14-LP1.png');
+/*	background-image: url('/img/GC14-LP1.png');*/
 }
 
 h1	{
