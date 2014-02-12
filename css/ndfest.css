@@ -23,14 +23,8 @@ h1	{
 	font-size: 4em;
 	margin: 0;
 	text-align: center;
-	color: transparent;
-	-webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px grey;
-
-}
-
+	color: white;
+	text-shadow: 1px 1px 5px rgba(255,255,255,.3)
 }
 
 
