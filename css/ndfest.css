@@ -23,6 +23,7 @@ h1, h2, p {
 	text-align: center;
 	color: white;
 	text-shadow: 1px 1px 15px rgba(0,0,0,.3);
+	width:90%;
 }
 
 h1	{
@@ -34,13 +35,10 @@ h1	{
 h2	{
 	font-size: 2em;
 	margin: 0;
-	width:90%;
 
 }
 
 p	{
-	width:90%;
-
 }
 
 @media all and (max-width: 768px) {
