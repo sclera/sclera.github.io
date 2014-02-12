@@ -8,16 +8,20 @@ html {
 
 container	{
 	width:100%;
-/*	background-image: url('/img/GC14-LP1.png');*/
+	max-width:678px;
+	padding:2em 50px 0;
+	margin:0 auto;
 }
 
 img {
-	width:100%;
+	width:60%;
+	max-width:
 }
 
 h1	{
 	font-family: 'Open sans', sans-serif;
 	font-size:4em;
+	margin:0;
 	text-align:center;
 	color: white;
 }
@@ -31,3 +35,13 @@ p	{
 	margin:0;
 }
 
+
+@media all and (max-width: 768px) {
+	.container	{ 
+		padding:1em 10px 0;
+	}
+	
+	h1	{
+		font-size:3em;
+	}
+}
