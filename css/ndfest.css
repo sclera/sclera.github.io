@@ -18,24 +18,27 @@ img {
 	width:80%;
 }
 
-h1	{
+h1, h2, p {
 	font-family: 'Open sans', sans-serif;
-	font-size: 4em;
-	margin: 0;
 	text-align: center;
 	color: white;
 	text-shadow: 1px 1px 15px rgba(0,0,0,.3)
 }
 
-
-p	{
-	font-family: 'Open sans', sans-serif;
-	font-size: 2em;
-	text-align: center;
-	color: white;
+h1	{
+	font-size: 4em;
 	margin: 0;
 }
 
+
+h2	{
+	font-size: 2em;
+	margin: 0;
+}
+
+p	{
+
+}
 
 @media all and (max-width: 768px) {
 	.container	{ 
