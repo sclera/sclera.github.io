@@ -36,10 +36,11 @@
 	<!-- <tr><td>Item</td><td>Unit</td><td>Price/Unit</td><td>Qty</td><td>Total</td></tr> -->
 	<tr>
 		<td>
-			<select name="item_1" id="item_1" onchange="$('#item_1_cost').val( $('#item_1').val() )">
+			<select name="item_1" id="item_1" onchange="">
 				<option value="1.00">Silicone</option>
 				<option value="2.00">Cotton</option>
 			</select>
+			<input type="button" name="ok" value="" onclick="$('#item_1_cost').val( $('#item_1').val() )" id="ok">
 		</td>
 		<td>
 			Unit
