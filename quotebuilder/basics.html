@@ -36,11 +36,11 @@
 	<!-- <tr><td>Item</td><td>Unit</td><td>Price/Unit</td><td>Qty</td><td>Total</td></tr> -->
 	<tr>
 		<td>
-			<select name="item_1" id="item_1" onchange="">
+			<select name="item_1" id="item_1" onfocusout="$('#item_1_cost').val( $('#item_1').val() )">
 				<option value="1.00">Silicone</option>
 				<option value="2.00">Cotton</option>
 			</select>
-			<input type="button" name="ok" value="OK" onclick="$('#item_1_cost').val( $('#item_1').val() )" id="ok">
+			<!-- <input type="button" name="ok" value="OK" onclick="$('#item_1_cost').val( $('#item_1').val() )" id="ok"> -->
 		</td>
 		<td>
 			Unit
@@ -49,7 +49,7 @@
 			<input type="" id="item_1_cost" disabled />
 		</td>
 		<td>
-			Qty
+			
 		</td>
 		<td>
 			Total
