@@ -1,0 +1,58 @@
+
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+<h1>Add commodity</h1>
+
+<form action="front_submit" method="get" accept-charset="utf-8">
+	<label for="item_name">Item Name</label><input type="text" name="item_name" value="" id="item_name"><br>
+	<label for="unit">Unit (kg, metre, litre, hour etc)</label><input type="text" name="unit" value="" id="unit"><br>
+	
+	<label for="cost_per_unit">Cost per unit</label><input type="text" name="cost_per_unit" value="" id="cost_per_unit"><br>
+	<p><input type="submit" value="Continue &rarr;"></p>
+</form>
+
+<h2>Commodities in system</h2>
+
+<table border="1" cellspacing="0" cellpadding="5">
+	<tr><th>Item</th><th>Unit</th><th>Cost per Unit</th><th>&nbsp;</th></tr>
+	<tr><td>Silicone</td><td>Litre</td><td>£1.00</td><td><a href=#>edit</a></td></tr>
+	<tr><td>Latex</td><td>Litre</td><td>£1.00</td><td><a href=#>edit</a></td></tr>
+	<tr><td>Cotton</td><td>Metre</td><td>£1.00</td><td><a href=#>edit</a></td></tr>
+	<tr><td>Plaster</td><td>Kg</td><td>£1.00</td><td><a href=#>edit</a></td></tr>
+	<tr><td>Alginate</td><td>Litre</td><td>£1.00</td><td><a href=#>edit</a></td></tr>
+</table>
+
+
+<hr />
+
+
+<h1>New Quote</h1>
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr><th>Item</th><th>Unit</th><th>Price/Unit</th><th>Qty</th><th>Total</th></tr>
+	<!-- <tr><td>Item</td><td>Unit</td><td>Price/Unit</td><td>Qty</td><td>Total</td></tr> -->
+	<tr>
+		<td>
+			<select name="item_1" id="item_1" onchange="$('#item_1_cost').val( $('#item_1').val() )">
+				<option value="1.00">Silicone</option>
+				<option value="2.00">Cotton</option>
+			</select>
+		</td>
+		<td>
+			Unit
+		</td>
+		<td>
+			<p id="item_1_cost">x</p>
+		</td>
+		<td>
+			Qty
+		</td>
+		<td>
+			Total
+		</td>
+	</tr>
+</table>
+
