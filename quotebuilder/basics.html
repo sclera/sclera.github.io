@@ -42,7 +42,7 @@
 			Litre
 		</td>
 		<td>
-			<input type="number" id="item_1_cost" value="1.00" onchange="$('#item_1_total').val( parseFloat($('#item_1_cost').val()) * parseFloat($('#item_1_qty').val())  )"  />
+			<input type="number" id="item_1_cost" placeholder="1.00" onchange="$('#item_1_total').val( parseFloat($('#item_1_cost').val()) * parseFloat($('#item_1_qty').val())  )"  />
 		</td>
 		<td>
 			<input type="number" id="item_1_qty" onfocusout="$('#item_1_total').val( parseFloat($('#item_1_cost').val()) * parseFloat($('#item_1_qty').val())  )" />
@@ -61,7 +61,7 @@
 			Litre
 		</td>
 		<td>
-			<input type="number" id="item_2_cost" value="2.00"  onchange="$('#item_2_total').val( parseFloat($('#item_2_cost').val()) * parseFloat($('#item_2_qty').val())  )" />
+			<input type="number" id="item_2_cost" placeholder="2.00"  onfocusout="$('#item_2_total').val( parseFloat($('#item_2_cost').val()) * parseFloat($('#item_2_qty').val())  )" />
 		</td>
 		<td>
 			<input type="number" id="item_2_qty" onfocusout="$('#item_2_total').val( parseFloat($('#item_2_cost').val()) * parseFloat($('#item_2_qty').val())  )" />
