@@ -33,14 +33,12 @@
 
 <table border="0" cellspacing="5" cellpadding="5">
 	<tr><th>Item</th><th>Unit</th><th>Price/Unit</th><th>Qty</th><th>Total</th></tr>
-	<!-- <tr><td>Item</td><td>Unit</td><td>Price/Unit</td><td>Qty</td><td>Total</td></tr> -->
 	<tr>
 		<td>
 			<select name="item_1" id="item_1" onfocusout="$('#item_1_cost').val( $('#item_1').val() )">
 				<option value="1.00">Silicone</option>
 				<option value="2.00">Cotton</option>
 			</select>
-			<!-- <input type="button" name="ok" value="OK" onclick="$('#item_1_cost').val( $('#item_1').val() )" id="ok"> -->
 		</td>
 		<td>
 			Unit
@@ -61,10 +59,48 @@
 
 <hr />
 
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr><th>Item</th><th>Unit</th><th>Price/Unit</th><th>Qty</th><th>Total</th></tr>
+	<tr>
+		<td>
+			Silicon
+		</td>
+		<td>
+			KG
+		</td>
+		<td>
+			<input type="number" id="item_1_cost" value="1.00" disabled />
+		</td>
+		<td>
+			<input type="number" id="item_1_qty" onfocusout="$('#item_1_total').val( parseFloat($('#item_1_cost').val()) * parseFloat($('#item_1_qty').val())  )" />
+			
+		</td>
+		<td>
+			<input type="number" id="item_1_total" disabled />
+			
+		</td>
+	</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <form>
     Type something in here:
     <input id="example3a" type="text" />
     <input type="button" value="Set Value" onclick="$('#example3b').val( $('#example3a').val() )" />
     <input id="example3b" type="text" />
 </form>
+
+
 
