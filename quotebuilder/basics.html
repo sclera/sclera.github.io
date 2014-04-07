@@ -19,10 +19,10 @@
 <table border="1" cellspacing="0" cellpadding="5">
 	<tr><th>Item</th><th>Unit</th><th>Cost per Unit</th><th>&nbsp;</th></tr>
 	<tr><td>Silicone</td><td>Litre</td><td>£1.00</td><td><a href=#>edit</a></td></tr>
-	<tr><td>Latex</td><td>Litre</td><td>£1.00</td><td><a href=#>edit</a></td></tr>
-	<tr><td>Cotton</td><td>Metre</td><td>£1.00</td><td><a href=#>edit</a></td></tr>
-	<tr><td>Plaster</td><td>Kg</td><td>£1.00</td><td><a href=#>edit</a></td></tr>
-	<tr><td>Alginate</td><td>Litre</td><td>£1.00</td><td><a href=#>edit</a></td></tr>
+	<tr><td>Latex</td><td>Litre</td><td>£2.00</td><td><a href=#>edit</a></td></tr>
+	<tr><td>Cotton</td><td>Metre</td><td>£3.00</td><td><a href=#>edit</a></td></tr>
+	<tr><td>Plaster</td><td>Kg</td><td>£4.00</td><td><a href=#>edit</a></td></tr>
+	<tr><td>Alginate</td><td>Litre</td><td>£5.00</td><td><a href=#>edit</a></td></tr>
 </table>
 
 
@@ -39,7 +39,121 @@
 			Silicon
 		</td>
 		<td>
-			KG
+			Litre
+		</td>
+		<td>
+			<input type="number" id="item_1_cost" value="1.00" disabled />
+		</td>
+		<td>
+			<input type="number" id="item_1_qty" onfocusout="$('#item_1_total').val( parseFloat($('#item_1_cost').val()) * parseFloat($('#item_1_qty').val())  )" />
+			
+		</td>
+		<td>
+			<input type="number" id="item_1_total" disabled />
+			
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Latex
+		</td>
+		<td>
+			Litre
+		</td>
+		<td>
+			<input type="number" id="item_2_cost" value="2.00" disabled />
+		</td>
+		<td>
+			<input type="number" id="item_2_qty" onfocusout="$('#item_1_total').val( parseFloat($('#item_1_cost').val()) * parseFloat($('#item_1_qty').val())  )" />
+			
+		</td>
+		<td>
+			<input type="number" id="item_2_total" disabled />
+			
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Cotton
+		</td>
+		<td>
+			Metre
+		</td>
+		<td>
+			<input type="number" id="item_3_cost" value="3.00" disabled />
+		</td>
+		<td>
+			<input type="number" id="item_3_qty" onfocusout="$('#item_1_total').val( parseFloat($('#item_1_cost').val()) * parseFloat($('#item_1_qty').val())  )" />
+			
+		</td>
+		<td>
+			<input type="number" id="item_3_total" disabled />
+			
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Plaster
+		</td>
+		<td>
+			kg
+		</td>
+		<td>
+			<input type="number" id="item_4_cost" value="4.00" disabled />
+		</td>
+		<td>
+			<input type="number" id="item_4_qty" onfocusout="$('#item_1_total').val( parseFloat($('#item_1_cost').val()) * parseFloat($('#item_1_qty').val())  )" />
+			
+		</td>
+		<td>
+			<input type="number" id="item_4_total" disabled />
+			
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Alginate
+		</td>
+		<td>
+			kg
+		</td>
+		<td>
+			<input type="number" id="item_5_cost" value="5.00" disabled />
+		</td>
+		<td>
+			<input type="number" id="item_5_qty" onfocusout="$('#item_1_total').val( parseFloat($('#item_1_cost').val()) * parseFloat($('#item_1_qty').val())  )" />
+			
+		</td>
+		<td>
+			<input type="number" id="item_5_total" disabled />
+			
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Silicon
+		</td>
+		<td>
+			Litre
+		</td>
+		<td>
+			<input type="number" id="item_1_cost" value="1.00" disabled />
+		</td>
+		<td>
+			<input type="number" id="item_1_qty" onfocusout="$('#item_1_total').val( parseFloat($('#item_1_cost').val()) * parseFloat($('#item_1_qty').val())  )" />
+			
+		</td>
+		<td>
+			<input type="number" id="item_1_total" disabled />
+			
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Silicon
+		</td>
+		<td>
+			Litre
 		</td>
 		<td>
 			<input type="number" id="item_1_cost" value="1.00" disabled />
@@ -55,6 +169,14 @@
 	</tr>
 </table>
 
+<input type=button value="Quote me baby!" onclick="
+$('#total_total').val( parseFloat($('#item_1_total').val()) +
+												parseFloat($('#item_2_total').val()) +
+												parseFloat($('#item_3_total').val()) +
+												parseFloat($('#item_4_total').val()) +
+												parseFloat($('#item_5_total').val()) ) ">
+
+<p><strong> TOTAL : 			<input type="number" id="total_total" disabled /></strong></p>
 
 
 
