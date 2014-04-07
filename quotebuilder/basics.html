@@ -49,10 +49,12 @@
 			<input type="" id="item_1_cost" disabled />
 		</td>
 		<td>
+			<input type="number" id="item_1_qty" onfocusout=" onfocusout="$('#item_1_total').val( $('#item_1_cost').val() * $('#item_1_qty').val()  )"" />
 			
 		</td>
 		<td>
-			Total
+			<input type="" id="item_1_total" disabled />
+			
 		</td>
 	</tr>
 </table>
