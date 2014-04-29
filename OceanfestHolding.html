@@ -23,53 +23,6 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
 #pwbox-855:before,.#pwbox-855:after{content:"";display:table}.#pwbox-855:after{clear:both}.#pwbox-855{zoom:1}
 
 
-.ribbon {
- font-size: 16px !important;
- /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
-
- width: 80%;
-    
- position: relative;
- background: #ff00ff; /*ba89b6*/
- color: #fff;
- text-align: center;
- padding: 1em 2em; /* Adjust to suit */
- margin: 1em auto 2em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
-}
-.ribbon:before, .ribbon:after {
- content: "";
- position: absolute;
- display: block;
- bottom: -1em;
- border: 1.5em solid #e238ec; /*986794*/
- z-index: -1;
-}
-.ribbon:before {
- left: -2em;
- border-right-width: 1.5em;
- border-left-color: transparent;
-}
-.ribbon:after {
- right: -2em;
- border-left-width: 1.5em;
- border-right-color: transparent;
-}
-.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
- content: "";
- position: absolute;
- display: block;
- border-style: solid;
- border-color: #c031c7 transparent transparent transparent; /*804f7c*/
- bottom: -1em;
-}
-.ribbon .ribbon-content:before {
- left: 0;
- border-width: 1em 0 0 1em;
-}
-.ribbon .ribbon-content:after {
- right: 0;
- border-width: 1em 1em 0 0;
-}
 
 .non-semantic-protector { position: relative; z-index: 1; }
 
@@ -82,15 +35,6 @@ margin:0 10px 1em 0;
 }
 
 .fpbox.last { margin:0 0 1em; }
-
-#fp-form { margin: 6em 0 0 60px;}
-#fp-form label { display:block; width: 100px; color:white; float:left }
-#fp-form input { width: 200px; margin-bottom:.6em; float:left;  }
-
-/*contact form weirdness*/
-#wpcf7-f1534-p1526-o1 br {display:inline;}
-#wpcf7-f1534-p1526-o1 input[type=checkbox] {width:20px}
-
 
 
 /* Temporary Menu */
@@ -105,32 +49,7 @@ div.menu-main-nav-container {
 
 #menu-main-nav a:hover { color:#f90;}
 
- .price-table * { 
-  margin:0;
-  padding:0;
-  border:none;
-  border-spacing: 0;
-  border-collapse: collapse;
-}
 
-.price-table {
-  width:100%;  
-}
-
-.price-table td,
-.price-table th {
-  width:20%;
-  text-align:center;
-  padding:0.2em;
-}
-
-.price-table tr:nth-child(even) {
-  background: rgba(255,153,0,0.5);
-}
-.price-table td:nth-child(even),
-.price-table th:nth-child(even) {
-  background: rgba(255,153,0,0.5);
-}
 
 /* 
 body{background:#ed1651 url('http://goldcoastoceanfest.co.uk/wp-content/uploads/2013/07/GC14-wallpapertile2.png');}
