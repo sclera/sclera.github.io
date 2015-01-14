@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dan&rsquo;s Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+        <link rel=stylesheet href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
+        
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class=container>
+        <header class="site-header cf" role=banner>
+        <div class=site-logo>Dan's <span class=star>&#x2605;</span> Hideaway</div>
+        </header>
+        <div class=site-promo>
+        <h1>This is where I keep silly things...</h1>
+        </div>
+        </div>
+        <div class=site-content>
+        <div class=container>
+        <h2>Nothing to see here.</h2>
+        
+		<style>
+		
+		@CHARSET "UTF-8";
+#navigation {
+    width:250px;
+}
+
+#content {
+    width:700px;
+}
+
+#navigation,
+#content {
+    float:left;
+    margin:10px;
+}
+
+.collapsible,
+.page_collapsible {
+    margin: 0;
+    padding:10px;
+    height:20px;
+
+    border-top:#f0f0f0 1px solid;
+    background: #cccccc;
+
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration:none;
+    text-transform:uppercase;
+    color: #000;
+    font-size:1em;
+}
+
+.collapse-open {
+    background:#000;
+    color: #fff;
+}
+
+.collapse-open span {
+    display:block;
+    float:right;
+    padding:10px;
+}
+
+.collapse-open span {
+    background:url(images/minus.png) center center no-repeat;
+}
+
+.collapse-close span {
+    display:block;
+    float:right;
+    background:url(images/plus.png) center center no-repeat;
+    padding:10px;
+}
+
+div.container {
+    padding:0;
+    margin:0;
+}
+
+div.content {
+    background:#f0f0f0;
+    margin: 0;
+    padding:10px;
+    font-size:.9em;
+    line-height:1.5em;
+    font-family:"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+div.content ul, div.content p {
+    margin:0;
+    padding:3px;
+}
+
+div.content ul li {
+    list-style-position:inside;
+    line-height:25px;
+}
+
+div.content ul li a {
+    color:#555555;
+}
+
+code {
+    overflow:auto;
+}
+    
+	
+	</style>
+		
+		
+		<div class="collapsible" id="section1">Heading<span></span><div>
+			<div class="container">
+				<div class="content">
+				<div>Sample Content</div>
+				<p>Content here....</p>
+			</div>
+		</div>
+		<div class="collapsible" id="section2">Heading<span></span><div>
+		<div class="container">
+			<div class="content">
+				<div>Sample Content</div>
+				<p>Content here....</p>
+			</div>
+		</div>
+		<div class="collapsible" id="section3">Heading<span></span><div>
+		<div class="container">
+			<div class="content">
+				<div>Sample Content</div>
+				<p>Content here....</p>
+			</div>
+		</div>
+    
+	<script>
+	
+	/**
+ * Collapsible, jQuery Plugin
+ * 
+ * Collapsible management.  Optional cookie support using the jQuery Cookie plugin:
+ * https://github.com/carhartl/jquery-cookie
+ * 
+ * Copyright (c) 2010 John Snyder (snyderplace.com)
+ * @license http://www.snyderplace.com/collapsible/license.txt New BSD
+ * @version 1.2.1
+ */
+(function($) {
+    $.fn.collapsible = function (cmd, arg) {
+
+        //firewalling
+        if (!this || this.length < 1) {
+            return this;
+        }
+
+        //address command requests
+        if (typeof cmd == 'string') {
+            return $.fn.collapsible.dispatcher[cmd](this, arg);
+        }
+        
+        //return the command dispatcher
+        return $.fn.collapsible.dispatcher['_create'](this, cmd);
+    };
+
+    //create the command dispatcher
+    $.fn.collapsible.dispatcher = {
+
+        //initialized with options
+        _create : function(obj, arg) {
+            createCollapsible(obj, arg);
+        },
+
+        //toggle the element's display
+        toggle: function(obj) {
+            toggle(obj, loadOpts(obj));
+            return obj;
+        },
+
+        //show the element
+        open: function(obj) {
+            open(obj, loadOpts(obj));
+            return obj;
+        },
+
+        //hide the element
+        close: function(obj) {
+            close(obj, loadOpts(obj));
+            return obj;
+        },
+
+        //check if the element is closed
+        collapsed: function(obj) {
+            return collapsed(obj, loadOpts(obj));
+        },
+
+        //open all closed containers
+        openAll: function(obj) {
+            return openAll(obj, loadOpts(obj));
+        },
+
+        //close all opened containers
+        closeAll: function(obj) {
+            return closeAll(obj, loadOpts(obj));
+        }
+    };
+
+    //create the initial collapsible
+    function createCollapsible(obj, options)
+    {
+
+        //build main options before element iteration
+        var opts = $.extend({}, $.fn.collapsible.defaults, options);
+        
+        //store any opened default values to set cookie later
+        var opened = [];
+        
+        //iterate each matched object, bind, and open/close
+        obj.each(function() {
+
+            var $this = $(this);
+            saveOpts($this, opts);
+            
+            //bind it to the event
+            if (opts.bind == 'mouseenter') {
+
+                $this.bind('mouseenter', function(e) {
+                    e.preventDefault(); 
+                    toggle($this, opts);
+                });
+            }
+            
+            //bind it to the event
+            if (opts.bind == 'mouseover') {
+
+                $this.bind('mouseover',function(e) {
+                    e.preventDefault(); 
+                    toggle($this, opts); 
+                });
+            }
+            
+            //bind it to the event
+            if (opts.bind == 'click') {
+
+                $this.bind('click', function(e) {
+                    e.preventDefault();
+                    toggle($this, opts);
+                });
+
+            }
+            
+            //bind it to the event
+            if (opts.bind == 'dblclick') {
+
+                $this.bind('dblclick', function(e) {
+
+                    e.preventDefault();
+                    toggle($this, opts);
+                });
+
+            }
+            
+            //initialize the collapsibles
+            //get the id for this element
+            var id = $this.attr('id');
+            
+            //if not using cookies, open defaults
+            if (!useCookies(opts)) {
+
+                //is this collapsible in the default open array?
+                var dOpenIndex = inDefaultOpen(id, opts);
+                
+                //close it if not defaulted to open
+                if (dOpenIndex === false) {
+
+                    $this.addClass(opts.cssClose);
+                    opts.loadClose($this, opts);
+
+                } else { //its a default open, open it
+
+                    $this.addClass(opts.cssOpen);
+                    opts.loadOpen($this, opts);
+                    opened.push(id);
+                }
+
+            } else { //can use cookies, use them now
+
+                //has a cookie been set, this overrides default open
+                if (issetCookie(opts)) {
+
+                    var cookieIndex = inCookie(id, opts);
+
+                    if (cookieIndex === false) {
+
+                        $this.addClass(opts.cssClose);
+                        opts.loadClose($this, opts);
+
+                    } else {
+
+                        $this.addClass(opts.cssOpen);
+                        opts.loadOpen($this, opts);
+                        opened.push(id);
+                    }
+
+                } else { //a cookie hasn't been set open defaults, add them to opened array
+
+                    dOpenIndex = inDefaultOpen(id, opts);
+
+                    if (dOpenIndex === false) {
+
+                        $this.addClass(opts.cssClose);
+                        opts.loadClose($this, opts);
+
+                    } else {
+
+                        $this.addClass(opts.cssOpen);
+                        opts.loadOpen($this, opts);
+                        opened.push(id);
+                    }
+                }
+            }
+        });
+        
+        //now that the loop is done, set the cookie
+        if (opened.length > 0 && useCookies(opts)) {
+
+            setCookie(opened.toString(), opts);
+
+        } else { //there are none open, set cookie
+
+            setCookie('', opts);
+        }
+        
+        return obj;
+    }
+    
+    //load opts from object
+    function loadOpts($this) {
+        return $this.data('collapsible-opts');
+    }
+    
+    //save opts into object
+    function saveOpts($this, opts) {
+        return $this.data('collapsible-opts', opts);
+    }
+    
+    //returns true if object is opened
+    function collapsed($this, opts) {
+        return $this.hasClass(opts.cssClose);
+    }
+    
+    //hides a collapsible
+    function close($this, opts) {
+
+        //give the proper class to the linked element
+        $this.addClass(opts.cssClose).removeClass(opts.cssOpen);
+        
+        //close the element
+        opts.animateClose($this, opts);
+        
+        //do cookies if plugin available
+        if (useCookies(opts)) {
+            // split the cookieOpen string by ","
+            var id = $this.attr('id');
+            unsetCookieId(id, opts);
+        }
+    }
+    
+    //opens a collapsible
+    function open($this, opts) {
+
+        //give the proper class to the linked element
+        $this.removeClass(opts.cssClose).addClass(opts.cssOpen);
+        
+        //open the element
+        opts.animateOpen($this, opts);
+        
+        //do cookies if plugin available
+        if (useCookies(opts)) {
+
+            // split the cookieOpen string by ","
+            var id = $this.attr('id');
+            appendCookie(id, opts);
+        }
+    }
+    
+    //toggle a collapsible on an event
+    function toggle($this, opts) {
+
+        if (collapsed($this, opts)) {
+
+            //open a closed element
+            open($this, opts);
+
+        } else {
+
+            //close an open element
+            close($this, opts);
+        }
+        
+        return false;
+    }
+
+    //open all closed containers
+    function openAll($this, opts) {
+
+        // loop through all container elements
+        $.each($this, function(elem, value) {
+
+            if (collapsed($(value), opts)) {
+
+                //open a closed element
+                open($(value), opts);
+            }
+        });
+    }
+
+    //close all open containers
+    function closeAll($this, opts) {
+
+        $.each($this, function(elem, value) {
+
+            if (!collapsed($(value), opts)) {
+
+                //close an opened element
+                close($(value), opts);
+            }
+        });
+    }
+    
+    //use cookies?
+    function useCookies(opts) {
+
+        //return false if cookie plugin not present or if a cookie name is not provided
+        if (!$.cookie || opts.cookieName == '') {
+            return false;
+        }
+        
+        //we can use cookies
+        return true;
+    }
+    
+    //append a collapsible to the cookie
+    function appendCookie(value, opts) {
+
+        //check if cookie plugin available and cookiename is set
+        if (!useCookies(opts)) {
+            return false;
+        }
+        
+        //does a cookie already exist
+        if (!issetCookie(opts)) {
+
+            //no lets set one
+            setCookie(value, opts);
+            return true;
+        }
+        
+        //cookie already exists, is this collapsible already set?
+        if (inCookie(value, opts)) { //yes, quit here
+            return true;
+        }
+        
+        //get the cookie
+        var cookie = decodeURIComponent($.cookie(opts.cookieName));
+
+        //turn it into an array
+        var cookieArray = cookie.split(',');
+        
+        //add it to list
+        cookieArray.push(value);
+        
+        //save it
+        setCookie(cookieArray.toString(), opts);
+        
+        return true;    
+    }
+    
+    //unset a collapsible from the cookie
+    function unsetCookieId(value, opts)
+    {
+        //check if cookie plugin available and cookiename is set
+        if (!useCookies(opts)) {
+            return false;
+        }
+        
+        //if its not there we don't need to remove from it
+        if (!issetCookie(opts)) { //quit here, don't have a cookie 
+            return true;
+        }
+        
+        //we have a cookie, is this collapsible in it
+        var cookieIndex = inCookie(value, opts);
+        if (cookieIndex === false) { //not in the cookie quit here
+            return true;
+        }
+        
+        //still here get the cookie
+        var cookie = decodeURIComponent($.cookie(opts.cookieName));
+        
+        //turn it into an array
+        var cookieArray = cookie.split(',');
+        
+        //lets pop it out of the array
+        cookieArray.splice(cookieIndex, 1);
+
+        //overwrite
+        setCookie(cookieArray.toString(), opts);
+
+        return true
+    }
+    
+    //set a cookie
+    function setCookie(value, opts)
+    {
+        //can use the cookie plugin
+        if (!useCookies(opts)) { //no, quit here
+            return false;
+        }
+        
+        //cookie plugin is available, lets set the cookie
+        $.cookie(opts.cookieName, value, opts.cookieOptions);
+
+        return true;
+    }
+    
+    //check if a collapsible is in the cookie
+    function inCookie(value, opts)
+    {
+        //can use the cookie plugin
+        if (!useCookies(opts)) {
+            return false;
+        }
+        
+        //if its not there we don't need to remove from it
+        if (!issetCookie(opts)) { //quit here, don't have a cookie 
+            return false;
+        }
+
+        //get the cookie value
+        var cookie = decodeURIComponent($.cookie(opts.cookieName));
+        
+        //turn it into an array
+        var cookieArray = cookie.split(',');
+        
+        //get the index of the collapsible if in the cookie array
+        var cookieIndex = $.inArray(value, cookieArray);
+        
+        //is this value in the cookie array
+        if (cookieIndex == -1) { //no, quit here
+            return false;
+        }
+        
+        return cookieIndex;
+    }
+    
+    //check if a cookie is set
+    function issetCookie(opts)
+    {
+        //can we use the cookie plugin
+        if (!useCookies(opts)) { //no, quit here
+            return false;
+        }
+        
+        //is the cookie set
+        if ($.cookie(opts.cookieName) === null) { //no, quit here
+            return false;
+        }
+        
+        return true;
+    }
+    
+    //check if a collapsible is in the list of collapsibles to be opened by default
+    function inDefaultOpen(id, opts)
+    {
+        //get the array of open collapsibles
+        var defaultOpen = getDefaultOpen(opts);
+        
+        //is it in the default open array
+        var index = $.inArray(id, defaultOpen);
+        if (index == -1) { //nope, quit here
+            return false;
+        }
+        
+        return index;
+    }
+    
+    //get the default open collapsibles and return array
+    function getDefaultOpen(opts)
+    {
+        //initialize an empty array
+        var defaultOpen = [];
+        
+        //if there is a list, lets split it into an array
+        if (opts.defaultOpen != '') {
+            defaultOpen = opts.defaultOpen.split(',');
+        }
+        
+        return defaultOpen;
+    }
+    
+    // settings
+    $.fn.collapsible.defaults = {
+        cssClose: 'collapse-close', //class you want to assign to a closed collapsible header
+        cssOpen: 'collapse-open', //class you want to assign an opened collapsible header
+        cookieName: 'collapsible', //name of the cookie you want to set for this collapsible
+        cookieOptions: { //cookie options, see cookie plugin for details
+            path: '/',
+            expires: 7,
+            domain: '',
+            secure: ''
+        },
+        defaultOpen: '', //comma separated list of header ids that you want opened by default
+        speed: 'slow', //speed of the slide effect
+        bind: 'click', //event to bind to, supports click, dblclick, mouseover and mouseenter
+        animateOpen: function (elem, opts) { //replace the standard slideUp with custom function
+            elem.next().stop(true, true).slideDown(opts.speed);
+        },
+        animateClose: function (elem, opts) { //replace the standard slideDown with custom function
+            elem.next().stop(true, true).slideUp(opts.speed);
+        },
+        loadOpen: function (elem, opts) { //replace the default open state with custom function
+            elem.next().show();
+        },
+        loadClose: function (elem, opts) { //replace the default close state with custom function
+            elem.next().hide();
+        }
+    };
+
+})(jQuery);
+
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    //collapsible management
+    $('.collapsible').collapsible({
+      defaultOpen: 'nav-section1,nav-section3'
+    });
+  });
+</script>
+	
+
+        </div>
+        </div>
+        <aside class=aside>
+        <div class=container>
+        <ul class=inline-block-list>
+        <li>
+        <a href=http://twitter.com/danjit >
+        <img class=icon src="http://www.google.com/s2/favicons?domain=twitter.com" width=16px height=16px alt="Twitter logo"> Follow on Twitter</a>
+        </li>
+        <li>
+        <a href=http://facebook.com/danieljsmith1982 >
+        <img class=icon src="http://www.google.com/s2/favicons?domain=facebook.com" width=16px height=16px alt="Facebook logo"> Find me on Facebook</a>
+        </li>
+        <li>
+        <a href=http://sclera.co.uk >
+        <img class=icon src="http://www.google.com/s2/favicons?domain=sclera.co.uk" width=16px height=16px alt="Sclera logo"> My Main Site</a>
+        </li>
+        </ul>
+        </div>
+        </aside>
+        <footer class=site-footer role=contentinfo>
+        <div class=container>
+        <p>&copy; 2014 Danjit :)</p>
+        </div>
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+		
+		<script type="text/javascript" src="javascript/jquery.cookie.js"></script>
+		<script type="text/javascript" src="javascript/jquery.collapsible.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+			//collapsible management
+				$('.collapsible').collapsible({
+					defaultOpen: 'section1,section3'
+				});
+			});
+		</script>
+
+
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-38061983-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+    </body>
+</html>
